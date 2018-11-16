@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    *{margin: 0;padding: 0}
+    li{list-style-type: none;}
+    #box div{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+    }
+</style>
+</head>
+<body>
+    <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+        var aDiv = document.getElementById("box").getElementsByTagName("div");
+        var length = aDiv.length;
+        var w = 100;
+        var h = 100;
+        var MaxX,MaxY;
+        for(var i = 0; i < length ; i++){
+            aDiv[i].style.background = "radial-gradient(circle,#fff,"+rColor()+")";
+            aDiv[i].x = Math.random() * 30;
+            aDiv[i].y = Math.random() * 30;
+        }
+        getMax();
+        onresize = getMax;
+        function getMax() {
+            MaxX = window.innerWidth - w;
+            MaxY = window.innerHeight - h;
+        }
+        (function m() {
+            for(var i = 0; i < length ; i++){
+                var dom = aDiv[i];
+                var left = dom.offsetLeft + dom.x;
+                var top = dom.offsetTop + dom.y;
+                if(left <= 0 || left >= MaxX){
+                    dom.x = -dom.x;
+                    left = Math.max(left,0);
+                    left = Math.min(left,MaxX);
+                }
+                if (top <= 0 || top >=MaxY){
+                    dom.y = -dom.y;
+                    top = Math.max(top,0);
+                    top = Math.min(top,MaxY);
+                }
+                dom.style.left = left + 'px';
+                dom.style.top = top + 'px';
+            }
+            requestAnimationFrame(m);
+        })();
+        function rColor() {
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            return "rgb("+r+","+g+","+b+")";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    *{margin: 0;padding: 0}
+    li{list-style-type: none;}
+    #box{
+
+    }
+</style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /*
+            获取元素宽高数值的API
+                clientHeight    clientWidth
+                offsetHeight    offsetWidth
+                scrollHeight    scrollWidth
+            获取当前窗口浏览器窗口宽高的方式
+                window.innerWidth   (BOM)
+                window,innerHeight  (BOM)
+                在ie 6 7 8 不支持这个属性
+
+                document,documentElement.clientWidth
+                document,documentElement.clientHeight
+                兼容所有浏览器
+
+         */
+        var oBox = document.getElementById("box");
+        console.log(oBox.clientWidth)//width + padding
+        console.log(oBox.offsetWidth)//width + padding + border
+        console.log(oBox.scrollWidth)//盒子总共占的高  即使超出隐藏了也是一样
+    </script>
+</body>
+</html>

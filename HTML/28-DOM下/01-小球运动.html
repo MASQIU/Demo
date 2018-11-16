@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    *{margin: 0;padding: 0}
+    li{list-style-type: none;}
+    #ball{
+        width: 50px;
+        height: 50px;
+        background: radial-gradient(circle at center,#fff,#ff6600);
+        border-radius: 100%;
+        position: relative;
+    }
+</style>
+</head>
+<body>
+    <div id="ball"></div>
+    <script>
+        /*
+            offsetLeft()    只读属性
+        */
+        var oBall = document.getElementById("ball");
+        var startX = 0,
+            startY = 0,
+            Vx = 10,
+            Vy = 8;
+        var MaxX,MaxY;
+        window.onresize = getSize();
+        function getSize() {
+            MaxX = window.innerWidth - oBall.offsetWidth;
+            MaxY = window.innerHeight - oBall.offsetHeight;
+            return getSize;
+        };
+
+        function m() {
+            startX += Vx;
+            startY += Vy;
+            if(startX >=MaxX || startX <=0){
+                Vx = -Vx;
+                startX = Math.min(MaxX,startX);
+                startX = Math.max(0,startX);
+            }
+            if (startY >=MaxY || startY <=0){
+                Vy = -Vy;
+                startY = Math.min(MaxY,startY);
+                startY = Math.max(0,startY);
+            }
+            oBall.style.left = startX + 'px';
+            oBall.style.top = startY + 'px';
+            requestAnimationFrame(m);
+        }
+        m();
+    </script>
+</body>
+</html>

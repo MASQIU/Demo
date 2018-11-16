@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    *{margin: 0;padding: 0}
+    li{list-style-type: none;}
+    #box{
+        position: relative;
+        width: 500px;
+        height:500px;
+        border: 1px solid #000;
+        background: pink;
+    }
+    #pp{
+        width: 50px;
+        height:50px;
+        background: red;
+        margin: 100px ;
+    }
+</style>
+</head>
+<body>
+    <div id="box">
+        <p id="pp"></p>
+    </div>
+    <script>
+        /*
+            offsetParent    定位父级
+            offsetLeft      元素左边    距离 定位父级左边 的数值   (这里所指的元素不含margin)
+            offsetTop       元素顶部    距离 定位父级顶部 的数值
+         */
+        var oP = document.getElementById("pp");
+        console.log(oP.offsetLeft);
+    </script>
+</body>
+</html>
